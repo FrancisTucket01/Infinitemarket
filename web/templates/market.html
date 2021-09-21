@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% block title %}
+    Market Page
+{% endblock %}
+
+{% block content %}
+    
+    <div class="container">
+                {% for item in items %}
+                <div class="card mb-3 cardhover marg">
+                    <div class="row g-0">
+                        <div class="col-md-4 card ">
+                            <img src="https://59fa-35-196-129-154.ngrok.io/static/{{ item.barcode.strip("&") }}.jpg" class="img-fluid rounded-start" style="width: 100%;height: 100%;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.name }}</h5>
+                                <p class="card-text">{{ item.description }}</p>
+                                <p class="card-text">Price :  Ksh {{ item.price }}</p>
+                                {% if item.availability == True %}
+                                    <p >Availability : in stock </p>   
+                                    <button class="btn-gr" id="btn-gr">Purchase Item</button>
+                                    </br>
+                                </br>
+                                    <button class="btn-gr" id="btn-gr">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                                    </br>
+                                {% else %}
+                                    <p class="card-text">Availability : Out of stock  </p>
+                                    
+                                    <button class="btn-gr" id="btn-gr" name="cart">Add to Cart <i class="fas fa-shopping-cart"></i></button>
+                                {% endif %}
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+    </div>
+   
+    
+{% endblock %}

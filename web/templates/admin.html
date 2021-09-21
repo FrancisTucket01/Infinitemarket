@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% block title %}
+    Admin Page
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="w3-container">
+            <div class="w3-row">
+                <div class="w3-col m3 w3-center "><h4>Items Table</h4></div>
+                <div class="w3-col m3 w3-center "><button class="w3-btn w3-round-large w3-black">- Remove Items</button></div>
+                <div class="w3-col m6 w3-center "> <button class="w3-btn w3-round-large w3-black">+ Add Items</button></div>
+            </div>
+       
+        <table class="w3-table-all w3-card-4">
+            <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>barcode</th>
+            <th>Description</th>
+            <th>Availability</th>
+            <th>Actions</th>
+            </tr>
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.price }}</td>
+                    <td>{{ item.barcode }}</td>
+                    <td>{{ item.availability }}</td>
+                    <td>{{ item.description }}</td>
+                    <td><button class="w3-btn w3-round-large w3-black" onclick="myfunction()">- Remove Item</button></td>
+                </tr>
+            {% endfor %}
+            {% block javascript %}
+	           
+            {% endblock %}
+            
+            
+        </table>
+        </div>
+    </div>
+{% endblock %}
